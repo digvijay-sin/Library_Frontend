@@ -1,0 +1,22 @@
+<h1>Enter Student Information</h1>
+<div class="addbook-container">
+    <form [formGroup]="IssueForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group">
+            <label for="bookId">Book_id</label>
+            <input id="bookId" formControlName="bookId" type="number" class="form-control" placeholder="Enter bookId" />
+        </div>
+
+        <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input id="studentId" formControlName="studentId" type="number" class="form-control" placeholder="Enter Student ID" />
+        
+        </div>
+        <div class="form-group">
+            <label for="issueDate">Issue Date</label>
+            <input id="issueDate" formControlName="issueDate" type="date" class="form-control" placeholder="Select Issue Date" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary" >Issue Book</button>
+        <button type="button" class="btn back" (click)="onBack()">Back</button>
+    </form>
+</div>

@@ -1,0 +1,67 @@
+<h1>Add Books Into Library</h1>
+<div class="addbook-container">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="bookId">Book_id</label>
+            <input id="bookId" formControlName="bookId" type="number" class="form-control" placeholder="Enter bookId" />
+            <div *ngIf="bookForm.get('bookId')?.invalid && (bookForm.get('bookId')?.dirty || bookForm.get('bookId')?.touched)"
+                class="error-message">
+                <div *ngIf="bookForm.get('bookId')?.errors?.['required']">Book ID is required.</div>
+                <div *ngIf="bookForm.get('bookId')?.errors?.['pattern']">Book ID must be a number.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">BookName</label>
+            <input id="name" formControlName="name" type="text" class="form-control" placeholder="Enter BookName" />
+            <div *ngIf="bookForm.get('name')?.invalid && (bookForm.get('name')?.dirty || bookForm.get('name')?.touched)" class="error-message">
+                <div *ngIf="bookForm.get('name')?.errors?.['required']">Book Name is required.</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input id="isbn" formControlName="isbn" type="text" class="form-control" placeholder="Enter ISBN" />
+            <div *ngIf="bookForm.get('isbn')?.invalid && (bookForm.get('isbn')?.dirty || bookForm.get('isbn')?.touched)" class="error-message">
+                <div *ngIf="bookForm.get('isbn')?.errors?.['required']">ISBN is required.</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="publisher">Publisher</label>
+            <input id="publisher" formControlName="publisher" type="text" class="form-control" placeholder="Enter publisher name" />
+            <div *ngIf="bookForm.get('publisher')?.invalid && (bookForm.get('publisher')?.dirty || bookForm.get('publisher')?.touched)" class="error-message">
+                <div *ngIf="bookForm.get('publisher')?.errors?.['required']">Publisher is required.</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edition">Edition</label>
+            <input id="edition" formControlName="edition" type="text" class="form-control"
+                placeholder="Enter Edition" />
+                <div *ngIf="bookForm.get('edition')?.invalid && (bookForm.get('edition')?.dirty || bookForm.get('edition')?.touched)" class="error-message">
+                    <div *ngIf="bookForm.get('edition')?.errors?.['required']">Edition is required.</div>
+                  </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input id="price" formControlName="price" type="number" class="form-control" placeholder="Enter price" />
+            <div *ngIf="bookForm.get('price')?.invalid && (bookForm.get('price')?.dirty || bookForm.get('price')?.touched)" class="error-message">
+                <div *ngIf="bookForm.get('price')?.errors?.['required']">Price is required.</div>
+                <div *ngIf="bookForm.get('price')?.errors?.['min']">Price must be a positive number.</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="copies">Available Copies</label>
+            <input id="copies" formControlName="copies" type="number" class="form-control" placeholder="Enter Available books" />
+            <div *ngIf="bookForm.get('copies')?.invalid && (bookForm.get('copies')?.dirty || bookForm.get('copies')?.touched)" class="error-message">
+                <div *ngIf="bookForm.get('copies')?.errors?.['required']">copies are required.</div>
+                <div *ngIf="bookForm.get('copies')?.errors?.['min']">copies must be at least 1.</div>
+              </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn back" (click)="onBack()">Back</button>
+    </form>
+</div>

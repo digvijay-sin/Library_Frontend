@@ -1,0 +1,53 @@
+<h1>Return Book</h1>
+<div class="issuebook-container">
+  <form [formGroup]="issueBookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group search-section">
+      <label for="studentId">Student ID</label>
+      <input id="studentId" formControlName="studentId" type="number" class="form-control" placeholder="Enter Student ID" />
+    </div>
+    
+    <div class="form-group search-section">
+      <label for="bookId">Book ID</label>
+      <input id="bookId" formControlName="bookId" type="number" class="form-control" placeholder="Enter Book ID" />
+    </div>
+    <div class="form-group">
+      <label for="returnDate">Date of Return</label>
+      <input id="returnDate" formControlName="returnDate" type="date" class="form-control" placeholder="Select return Date" />
+    </div>
+    
+    <button type="button" class="btn btn-secondary" (click)="searchData()">Search</button>
+    
+    <div *ngIf="isDataLoaded" class="form-fields">
+      <div class="form-group">
+        <label for="bookName">Book Name</label>
+        <input id="bookName" formControlName="bookName" type="text" class="form-control" placeholder="Book Name" />
+      </div>
+
+      <div class="form-group">
+        <label for="course">Course</label>
+        <input id="course" formControlName="course" type="text" class="form-control" placeholder="Course" />
+      </div>
+
+      <div class="form-group">
+        <label for="issueDate">Date of Issue</label>
+        <input id="issueDate" formControlName="issueDate" type="date" class="form-control" />
+      </div>
+
+
+      <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input id="studentName" formControlName="studentName" type="text" class="form-control" placeholder="Student Name" />
+      </div>
+
+      <div class="form-group">
+        <label for="branch">Branch</label>
+        <input id="branch" formControlName="branch" type="text" class="form-control" placeholder="Branch" />
+      </div>
+     
+    </div>
+
+    <button type="button" class="btn btn-back" (click)="onBack()">Back</button>
+    <button type="submit" class="btn btn-return" >Return Book</button>
+  </form>
+</div>
+

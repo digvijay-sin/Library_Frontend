@@ -1,0 +1,149 @@
+
+<div class="addbook-container" *ngIf="studentFromVisible">
+    <h1>Add Student Details</h1>
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input id="studentId" formControlName="studentId" type="number" class="form-control" placeholder="Enter Student ID" />
+            <div *ngIf="studentForm.get('studentId')?.invalid && (studentForm.get('studentId')?.dirty || studentForm.get('studentId')?.touched)"
+                class="error-message">
+                <div *ngIf="studentForm.get('studentId')?.errors?.['required']">Student ID is required.</div>
+                <div *ngIf="studentForm.get('studentId')?.errors?.['pattern']">Student ID must be a number.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="studentName">Student Name</label>
+            <input id="studentName" formControlName="studentName" type="text" class="form-control" placeholder="Enter Student Name" />
+            <div *ngIf="studentForm.get('studentName')?.invalid && (studentForm.get('studentName')?.dirty || studentForm.get('studentName')?.touched)" class="error-message">
+                <div *ngIf="studentForm.get('studentName')?.errors?.['required']">Student Name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Course</label>
+            <select id="course" formControlName="course" class="form-control">
+                <option value="" disabled>Select Course</option>
+                <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+            </select>
+            <div *ngIf="studentForm.get('course')?.invalid && (studentForm.get('course')?.dirty || studentForm.get('course')?.touched)" class="error-message">
+                <div *ngIf="studentForm.get('course')?.errors?.['required']">Course is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="branch">Branch</label>
+            <select id="branch" formControlName="branch" class="form-control">
+                <option value="" disabled>Select Branch</option>
+                <option *ngFor="let branch of branches" [value]="branch">{{ branch }}</option>
+            </select>
+            <div *ngIf="studentForm.get('branch')?.invalid && (studentForm.get('branch')?.dirty || studentForm.get('branch')?.touched)" class="error-message">
+                <div *ngIf="studentForm.get('branch')?.errors?.['required']">Branch is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Year</label>
+            <select id="year" formControlName="year" class="form-control">
+                <option value="" disabled>Select Year</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+            <div *ngIf="studentForm.get('year')?.invalid && (studentForm.get('year')?.dirty || studentForm.get('year')?.touched)" class="error-message">
+                <div *ngIf="studentForm.get('year')?.errors?.['required']">Year is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="semester">Semester</label>
+            <select id="semester" formControlName="semester" class="form-control">
+                <option value="" disabled>Select Semester</option>
+                <option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</option>
+            </select>
+            <div *ngIf="studentForm.get('semester')?.invalid && (studentForm.get('semester')?.dirty || studentForm.get('semester')?.touched)" class="error-message">
+                <div *ngIf="studentForm.get('semester')?.errors?.['required']">Semester is required.</div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Add Student</button>
+        <button type="button" class="btn back" (click)="updateStudent()">Update Student</button>
+        <button type="button" class="btn back" (click)="onBack()">Back</button>
+    </form>
+</div>
+
+
+<!-- code for update student information update  -->
+
+<div class="addbook-container" *ngIf="updateStudentForm">
+    <h1>Update Student Details</h1>
+    <form [formGroup]="studentForm" (ngSubmit)="submitUpdate()">
+      <div class="form-group">
+        <label for="studentId">Student ID</label>
+        <input id="studentId" formControlName="studentId" type="number" class="form-control" placeholder="Enter Student ID" />
+        <div *ngIf="studentForm.get('studentId')?.invalid && (studentForm.get('studentId')?.dirty || studentForm.get('studentId')?.touched)" class="error-message">
+          <div *ngIf="studentForm.get('studentId')?.errors?.['required']">Student ID is required.</div>
+          <div *ngIf="studentForm.get('studentId')?.errors?.['pattern']">Student ID must be a number.</div>
+        </div>
+      </div>
+  
+      <button type="button" class="btn btn-primary" (click)="onSearch()">Search</button>
+      <button type="button" class="btn back" (click)="onUpdateBack()">Back</button>
+  
+      <div *ngIf="isFormVisible">
+        <div class="form-group">
+          <label for="studentName">Student Name</label>
+          <input id="studentName" formControlName="studentName" type="text" class="form-control" placeholder="Enter Student Name" />
+          <div *ngIf="studentForm.get('studentName')?.invalid && (studentForm.get('studentName')?.dirty || studentForm.get('studentName')?.touched)" class="error-message">
+            <div *ngIf="studentForm.get('studentName')?.errors?.['required']">Student Name is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="course">Course</label>
+          <select id="course" formControlName="course" class="form-control">
+            <option value="" disabled>Select Course</option>
+            <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+          </select>
+          <div *ngIf="studentForm.get('course')?.invalid && (studentForm.get('course')?.dirty || studentForm.get('course')?.touched)" class="error-message">
+            <div *ngIf="studentForm.get('course')?.errors?.['required']">Course is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="branch">Branch</label>
+          <select id="branch" formControlName="branch" class="form-control">
+            <option value="" disabled>Select Branch</option>
+            <option *ngFor="let branch of branches" [value]="branch">{{ branch }}</option>
+          </select>
+          <div *ngIf="studentForm.get('branch')?.invalid && (studentForm.get('branch')?.dirty || studentForm.get('branch')?.touched)" class="error-message">
+            <div *ngIf="studentForm.get('branch')?.errors?.['required']">Branch is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="year">Year</label>
+          <select id="year" formControlName="year" class="form-control">
+            <option value="" disabled>Select Year</option>
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+          <div *ngIf="studentForm.get('year')?.invalid && (studentForm.get('year')?.dirty || studentForm.get('year')?.touched)" class="error-message">
+            <div *ngIf="studentForm.get('year')?.errors?.['required']">Year is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="semester">Semester</label>
+          <select id="semester" formControlName="semester" class="form-control">
+            <option value="" disabled>Select Semester</option>
+            <option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</option>
+          </select>
+          <div *ngIf="studentForm.get('semester')?.invalid && (studentForm.get('semester')?.dirty || studentForm.get('semester')?.touched)" class="error-message">
+            <div *ngIf="studentForm.get('semester')?.errors?.['required']">Semester is required.</div>
+          </div>
+        </div>
+  
+        <button type="button" class="btn back" (click)="onUpdateBack()">Back</button>
+        <button type="submit" class="btn back">Update Student</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,37 @@
+<h1>Book Details</h1>
+<button class="delete" (click)="onBack()">Back</button>
+<div class="search-container">
+  <input type="text"  placeholder="Search book here" [(ngModel)]="searchQuery" (input)="searchBooks(searchQuery)" />
+  <!-- [(ngModel)]="searchQuery" -->
+  <button >Search</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book ID</th>
+      <th>Book Name</th>
+      <th>ISBN</th>
+      <th>Publisher</th>
+      <th>Edition</th>
+      <th>Price</th>
+      <th>Available Copies</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.bookId }}</td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.isbn }}</td>
+      <td>{{ book.publisher }}</td>
+      <td>{{ book.edition }}</td>
+      <td>{{ book.price }}</td>
+      <td>{{ book.copies }}</td>
+      <td>
+        <button (click)="deleteBook(book.bookId)" class="delete">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

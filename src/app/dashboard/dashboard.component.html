@@ -1,0 +1,34 @@
+<div class="page-container">
+  <button class="logout-btn" (click)="logout()">Logout</button>
+<div class="dashboard-container">
+    <h1>Library Management System</h1>
+    <div class="dashboard-grid">
+      <div class="dashboard-item">
+        <img src="book.jpeg" alt="Add Book" />
+        <button (click)="navigateTo('/dashboard/add-book')">Add Book</button>
+      </div>
+      <div class="dashboard-item">
+        <img src="bookdetail.jpeg" alt="Book Details" />
+        <button (click)="navigateTo('dashboard/book-details')">View Book Details</button>
+      </div>
+      <div class="dashboard-item">
+        <img src="student.jpeg" alt="Add Student" />
+        <button (click)="navigateTo('/dashboard/add-student')">Add Student</button>
+      </div>
+      <div class="dashboard-item">
+        <img src="issue.jpeg" alt="Issue Book" />
+        <button (click)="navigateTo('/dashboard/issue-book')">Issue Book</button>
+      </div>
+      <div class="dashboard-item">
+        <img src="return.png" alt="Return Book" />
+        <button (click)="navigateTo('/dashboard/return-book')" >Return Book</button>
+      </div>
+      <div class="dashboard-item">
+        <img src="about.png" alt="About Us" />
+        <button >About Us</button>
+        <!-- (click)="navigateTo('/about-us')" -->
+      </div>
+    </div>
+  </div>
+</div>
+  
